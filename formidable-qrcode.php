@@ -63,11 +63,11 @@ function formidable_qrcode_generate($entry_id, $form_id)
         $text = $submitted->meta_value;
         $file_field = $file_fields[$submitted->field_id];
 
-        $text = str_replace(' ', '-', $text); // Replaces all spaces with hyphens.
-        $text = preg_replace('/[^A-Za-z0-9\-]/', '', $text); // Removes special chars.
-        $text = preg_replace('/-+/', '-', $text); // Replaces multiple hyphens with single one.
+        $name = str_replace(' ', '-', $text); // Replaces all spaces with hyphens.
+        $name = preg_replace('/[^A-Za-z0-9\-]/', '', $name); // Removes special chars.
+        $name = preg_replace('/-+/', '-', $name); // Replaces multiple hyphens with single one.
 
-        $name = str_replace(' ', '', $text . FORMIDABLE_QRCODE_SIZE . FORMIDABLE_QRCODE_MARGIN);
+        $name = str_replace(' ', '', $name . FORMIDABLE_QRCODE_SIZE . FORMIDABLE_QRCODE_MARGIN);
         $file_path = $upload_dir . $name . '.png';
 
         QRcode::png($text, $file_path, QR_ECLEVEL_H, FORMIDABLE_QRCODE_SIZE, FORMIDABLE_QRCODE_MARGIN);
