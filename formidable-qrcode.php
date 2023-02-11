@@ -27,7 +27,7 @@ register_activation_hook(__FILE__, function () {
     $upload = wp_upload_dir();
     $upload_dir = $upload['basedir'];
     $upload_dir .= FORMIDABLE_QRCODE_DIR;
-    if (!is_dir($upload_dir)) mkdir($upload_dir, 0700);
+    if (!is_dir($upload_dir)) mkdir($upload_dir, 0777);
 });
 
 add_action('frm_after_create_entry', 'formidable_qrcode_generate', 30, 2);
